@@ -20,9 +20,9 @@ function zaw-src-ghq() {
             local version=`head -n 1 $proj_path/ProjectSettings/ProjectVersion.txt 2> /dev/null | cut -d " " -f 2-2`
             if [[ $version ]]; then;
                 version=$space$unity$space$version
-                echo $version
+                echo -n $version
             fi
-            [[ -d $proj_path/.idea ]] && echo $space$intellij
+            [[ -d $proj_path/.idea ]] && echo -n $space$intellij
         }
         cand_descriptions=(`ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}'`)
     fi
