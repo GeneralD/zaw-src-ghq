@@ -6,7 +6,7 @@ function zaw-src-ghq() {
         brew install ghq
     fi
 
-    candidates=(`ghq list`)
+    candidates=("${(@f)$(ghq list)}")
     if which map 1>/dev/null; then # <- zsh-functional plugin is required
         # nerd fonts
         local space=$'\uf116'
@@ -24,14 +24,14 @@ function zaw-src-ghq() {
             fi
             [[ -d $proj_path/.idea ]] && echo -n $space$intellij
         }
-        cand_descriptions=(`ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}'`)
+        cand_descriptions=("${(@f)$(ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
     fi
     actions=(zaw-src-ghq-cd zaw-src-ghq-browse zaw-src-ghq-remove)
     act_descriptions=('cd' 'browse' 'remove')
 }
 
 function zaw-src-ghq-cd() {
-    BUFFER="cd `ghq root`/$1"
+    BUFFER="cd \"`ghq root`/$1\""
     zle accept-line
 }
 
