@@ -15,6 +15,7 @@ function zaw-src-ghq() {
         local github=$'\uf09b'
         local ionic=$'\ue7a9'
         local intellij=$'\ue7b5'
+        local vsts=$'\ue70c'
         local print-icons() {
             local proj_path="`ghq root`/$1"
             local version=`head -n 1 $proj_path/ProjectSettings/ProjectVersion.txt 2> /dev/null | cut -d " " -f 2-2`
@@ -24,7 +25,7 @@ function zaw-src-ghq() {
             fi
             [[ -d $proj_path/.idea ]] && echo -n $space$intellij
         }
-        cand_descriptions=("${(@f)$(ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
+        cand_descriptions=("${(@f)$(ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/vs-ssh.visualstudio.com\/v3\//${vsts}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
     fi
     actions=(zaw-src-ghq-cd zaw-src-ghq-browse zaw-src-ghq-remove)
     act_descriptions=('cd' 'browse' 'remove')
