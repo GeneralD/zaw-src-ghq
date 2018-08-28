@@ -25,7 +25,7 @@ function zaw-src-ghq() {
             fi
             [[ -d $proj_path/.idea ]] && echo -n $space$intellij
         }
-        cand_descriptions=("${(@f)$(ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/vs-ssh.visualstudio.com\/v3\//${vsts}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
+        cand_descriptions=("${(@f)$(ghq list | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/vs-ssh.visualstudio.com/${vsts}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
     fi
     actions=(zaw-src-ghq-cd zaw-src-ghq-browse zaw-src-ghq-remove)
     act_descriptions=('cd' 'browse' 'remove')
