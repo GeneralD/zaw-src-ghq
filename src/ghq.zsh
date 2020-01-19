@@ -55,7 +55,7 @@ function zaw-src-ghq-browse() {
 
 function zaw-src-ghq-remove() {
     echo "\033[0;33mDo you want to remove `ghq root`/$1? (y/n)"
-    if read -qs && BUFFER="rm -rf `ghq root`/$1"
+    if read -qs && BUFFER="rm -rf \"`ghq root`/$1\""
     zle accept-line
 }
 
