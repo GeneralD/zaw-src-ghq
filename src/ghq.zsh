@@ -7,26 +7,6 @@ function zaw-src-ghq() {
     fi
     local l=`ghq list`
     candidates=("${(@f)l}")
-    if which map 1>/dev/null; then # <- zsh-functional plugin is required
-        # nerd fonts
-        local space=$'\uf116'
-        local unity=$'\ue721'
-        local bitbucket=$'\uf171'
-        local github=$'\uf09b'
-        local ionic=$'\ue7a9'
-        local intellij=$'\ue7b5'
-        local vsts=$'\ue70c'
-        local print-icons() {
-            local proj_path="`ghq root`/$1"
-            local version=`head -n 1 $proj_path/ProjectSettings/ProjectVersion.txt 2> /dev/null | cut -d " " -f 2-2`
-            if [[ $version ]]; then;
-                version=$space$unity$space$version
-                echo -n $version
-            fi
-            [[ -d $proj_path/.idea ]] && echo -n $space$intellij
-        }
-        cand_descriptions=("${(@f)$(echo $l | map '$1$(print-icons $1)' | map '${1:gs/bitbucket.org\//${bitbucket}${space}}' | map '${1:gs/github.com\//${github}${space}}' | map '${1:gs/vs-ssh.visualstudio.com/${vsts}${space}}' | map '${1:gs/git.ionicjs.com\//${ionic}${space}}')}")
-    fi
     actions=(zaw-src-ghq-cd zaw-src-ghq-browse zaw-src-ghq-remove)
     act_descriptions=('cd' 'browse' 'remove')
 }
