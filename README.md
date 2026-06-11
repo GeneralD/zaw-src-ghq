@@ -1,5 +1,9 @@
 # zaw-src-ghq
 
+![shell](https://img.shields.io/badge/shell-zsh-blue) ![type](https://img.shields.io/badge/type-zaw%20source-blue) ![deps](https://img.shields.io/badge/deps-ghq%20%7C%20jq-blue) ![license](https://img.shields.io/badge/license-Apache--2.0-green)
+
+![zaw-src-ghq — fuzzy-pick your ghq-managed repos from zsh](assets/hero.jpg)
+
 Optional sources of [zaw](https://github.com/zsh-users/zaw) for [ghq](https://github.com/motemen/ghq):
 
 - ghq
